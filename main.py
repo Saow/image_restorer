@@ -8,7 +8,7 @@ def main():
 
     imageinput = input("Enter the name of the image: ")
     object = Image.open(imageinput)
-    object.show()
+    # object.show()
 
     while True:
         print("[1] Blur")
@@ -60,6 +60,7 @@ def main():
             break
 
         elif selectioninput == 6:
+            os.system('cls' if os.name == 'nt' else 'clear')
             print("Thank you for using the Image Filter Program")
             break
 
