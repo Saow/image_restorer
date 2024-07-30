@@ -21,43 +21,58 @@ def main():
         selectioninput = int(input("Enter the number of the filter you would like to apply: "))
 
         if selectioninput == 1:
+            os.system('cls' if os.name == 'nt' else 'clear')
             object = object.filter(ImageFilter.BLUR)
             object.show()
             continue
 
         elif selectioninput == 2:
+            os.system('cls' if os.name == 'nt' else 'clear')
             object = object.filter(ImageFilter.SHARPEN)
             object.show()
             continue
 
         elif selectioninput == 3:
+            os.system('cls' if os.name == 'nt' else 'clear')
             object = object.filter(ImageFilter.SMOOTH)
             object.show()
             continue
 
         elif selectioninput == 4:
+            os.system('cls' if os.name == 'nt' else 'clear')
             object.save("filteredimage.jpg") 
             print("Image has been saved as filteredimage.jpg")
             break
 
+        
         elif selectioninput == 5:
+            os.system('cls' if os.name == 'nt' else 'clear')
             print("[1] JPEG")
             print("[2] PNG")
             print("[3] webp")
-            print("[5] gif")
-            format = input(int("Enter the format of the image: "))
-            if format == 1:
-                saveimg = object.save(input("Enter the name of the image you would like to save: ") + ".jpg")
-            elif format == 2:
-                saveimg = object.save(input("Enter the name of the image you would like to save: ") + ".png")
-            elif format == 3:
-                saveimg = object.save(input("Enter the name of the image you would like to save: ") + ".webp")
-            elif format == 4:
-                saveimg = object.save(input("Enter the name of the image you would like to save: ") + ".gif")
-            else:
+            print("[4] GIF")
+            
+            try:
+                image_format = int(input("Enter the format of the image: "))
+            except ValueError:
+                print("Invalid input. Please enter a number between 1 and 4.")
                 continue
-            print("Image has been saved as " + saveimg)
-            break
+
+            if image_format == 1:
+                object.save(input("Enter the name of the image you would like to save: ") + ".jpg")
+                os.system('cls' if os.name == 'nt' else 'clear')
+            elif image_format == 2:
+                object.save(input("Enter the name of the image you would like to save: ") + ".png")
+                os.system('cls' if os.name == 'nt' else 'clear')
+            elif image_format == 3:
+                object.save(input("Enter the name of the image you would like to save: ") + ".webp")
+                os.system('cls' if os.name == 'nt' else 'clear')
+            elif image_format == 4:
+                object.save(input("Enter the name of the image you would like to save: ") + ".gif")
+                os.system('cls' if os.name == 'nt' else 'clear')
+            else:
+                print("Invalid format selection.")
+                continue
 
         elif selectioninput == 6:
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -67,6 +82,4 @@ def main():
         else:
             print("Invalid selection")
             continue
-if __name__ == "__main__":
-    main()
-
+main()
